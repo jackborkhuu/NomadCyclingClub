@@ -1,7 +1,7 @@
-import webapp2
+import webapp
 
 
-class MainPage(webapp2.RequestHandler):
+class MainPage(webapp.RequestHandler):
     def get(self):
         self.response.headers["Content-Type"] = "text/html"
         self.response.write("""
@@ -16,7 +16,7 @@ class MainPage(webapp2.RequestHandler):
             </html>""")
 
 
-class Greeting(webapp2.RequestHandler):
+class Greeting(webapp.RequestHandler):
     def post(self):
         username = self.request.get("my_name")
         welcome_string = """<html><body>
@@ -27,4 +27,4 @@ class Greeting(webapp2.RequestHandler):
 
 
 routes = [('/', MainPage), ('/welcome', Greeting)]
-my_app = webapp2.WSGIApplication(routes, debug=True)
+my_app = webapp.WSGIApplication(routes, debug=True)
